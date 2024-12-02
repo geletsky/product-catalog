@@ -1,0 +1,27 @@
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	min-height: 120px;
+
+	.logo {
+		font-size: 48px;
+		font-weight: 700;
+	}
+
+	.menu {
+		ul {
+			display: flex;
+			gap: 30px;
+
+			li {
+				font-weight: 500;
+				font-size: 22px;
+			}
+		}
+	}
+
+	.actions {
+		font-size: 24px;
+	}
+}

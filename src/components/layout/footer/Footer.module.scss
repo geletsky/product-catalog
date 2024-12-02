@@ -1,0 +1,37 @@
+footer {
+  padding: 30px 0px 0px 0px;
+	
+  background-color: #f8f9fa;
+
+  .footer {
+		padding: 30px;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .footerSection {
+
+    h4 {
+			margin: 0px 0px 15px 0px;
+
+      font-size: 26px;
+    }
+
+    ul {
+			display: flex;
+			flex-direction: column;
+			gap: 7px;
+			
+			li a {
+				color: #918e8e;
+			}
+    }
+
+  }
+
+  .footerBottom {
+		padding: 0px 0px 15px 0px;
+    text-align: center;
+  }
+}
