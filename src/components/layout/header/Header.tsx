@@ -1,9 +1,10 @@
+import { FC } from 'react'
 import { IoCartSharp } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
 
 import styles from './Header.module.scss'
 
-export const Header = () => {
+export const Header: FC = () => {
 	return (
 		<header className={styles.header}>
 			<div className={styles.logo}>IProduct</div>
