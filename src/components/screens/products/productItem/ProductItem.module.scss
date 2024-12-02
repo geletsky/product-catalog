@@ -1,0 +1,43 @@
+.wrapper {
+	padding: 20px;
+
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+
+
+	border-radius: 10px;
+	background-color: #ccc;
+
+	& img {
+		width: 100%;
+		height: 300px;
+		object-fit: cover;
+		border-radius: 8px;
+	}
+
+	.title {
+		font-weight: 600;
+	}
+
+	.info {
+		display: flex;
+		align-self: flex-start;
+		justify-content: space-between;
+		gap: 15px;
+
+		.price {
+			font-weight: 700;
+		}
+
+		.category {
+			color: #555;
+		}
+	}
+
+	.footer {
+		display: flex;
+		margin: auto 0px 0px 0px;
+		justify-content: space-between;
+	}
+}

@@ -1,5 +1,13 @@
+import { FC } from 'react'
+
 import { Layout } from '../../layout/Layout'
 
-export const Products = () => {
-	return <Layout>Products</Layout>
+import { ProductList } from './productList/ProductList'
+
+export const Products: FC = () => {
+	return (
+		<Layout>
+			<ProductList />
+		</Layout>
+	)
 }
