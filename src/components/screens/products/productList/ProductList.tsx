@@ -1,36 +1,55 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, useState } from 'react'
 
 import styles from './ProductList.module.scss'
 
-import { Product } from '../../../../types/product.types'
 import { ProductItem } from '../productItem/ProductItem'
 
+import { useFetchProducts } from './useFetchProducts'
+import { useFilterAndSortProducts } from './useFilterAndSortProducts'
+
+export type SortBy = 'asc' | 'desc'
+
 export const ProductList: FC = () => {
-	const [data, setData] = useState<Product[] | null>(null)
+	const { products, categories } = useFetchProducts()
+	const [sortBy, setSortBy] = useState<SortBy>('asc')
+	const [selectedCategory, setSelectedCategory] = useState<string>('All')
 
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const response = await fetch('https://fakestoreapi.com/products')
+	const filteredAndSortedProducts = useFilterAndSortProducts(
+		products,
+		selectedCategory,
+		sortBy
+	)
 
-				if (!response.ok) {
-					throw new Error('Failed to fetch products')
-				}
-
-				const data: Product[] = await response.json()
-
-				setData(data)
-			} catch (error) {
-				console.log(error)
-			}
-		}
-
-		fetchData()
-	}, [])
-	
 	return (
-		<div className={styles.products}>
-			{data?.map(product => <ProductItem key={product.id} product={product} />)}
-		</div>
+		<>
+			{products ? (
+				<>
+					<select
+						onChange={event => setSelectedCategory(event.target.value)}
+						value={selectedCategory}
+					>
+						<option value='All'>All</option>
+						{categories.map(category => (
+							<option key={category}>{category}</option>
+						))}
+					</select>
+
+					<select
+						onChange={event => setSortBy(event.target.value as SortBy)}
+						value={sortBy}
+					>
+						<option value='desc'>Desc</option>
+						<option value='asc'>Asc</option>
+					</select>
+					<div className={styles.products}>
+						{filteredAndSortedProducts?.map(product => (
+							<ProductItem key={product.id} product={product} />
+						))}
+					</div>
+				</>
+			) : (
+				<div>Loading...</div>
+			)}
+		</>
 	)
 }
