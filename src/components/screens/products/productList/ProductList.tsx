@@ -2,6 +2,7 @@ import { FC, useState } from 'react'
 
 import styles from './ProductList.module.scss'
 
+import { useCart } from '../../../../context/CartContext'
 import { ProductItem } from '../productItem/ProductItem'
 
 import { useFetchProducts } from './useFetchProducts'
@@ -13,6 +14,7 @@ export const ProductList: FC = () => {
 	const { products, categories } = useFetchProducts()
 	const [sortBy, setSortBy] = useState<SortBy>('asc')
 	const [selectedCategory, setSelectedCategory] = useState<string>('All')
+	const { addToCart, removeFromCart, cart } = useCart()
 
 	const filteredAndSortedProducts = useFilterAndSortProducts(
 		products,
@@ -43,7 +45,12 @@ export const ProductList: FC = () => {
 					</select>
 					<div className={styles.products}>
 						{filteredAndSortedProducts?.map(product => (
-							<ProductItem key={product.id} product={product} />
+							<ProductItem
+								key={product.id}
+								product={product}
+								addToCart={addToCart}
+								removeFromCart={removeFromCart}
+							/>
 						))}
 					</div>
 				</>

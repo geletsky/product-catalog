@@ -4,13 +4,19 @@ import styles from './ProductItem.module.scss'
 
 import { Button } from '../../../ui/button/Button'
 
-import { Product } from '../../../../types/product.types'
+import { ProductType } from '../../../../types/product.types'
 
 interface ProductItemProps {
-	product: Product
+	product: ProductType
+	addToCart: (product: ProductType) => void
+	removeFromCart: (id: number) => void
 }
 
-export const ProductItem: FC<ProductItemProps> = ({ product }) => {
+export const ProductItem: FC<ProductItemProps> = ({
+	product,
+	addToCart,
+	removeFromCart
+}) => {
 	return (
 		<div className={styles.wrapper}>
 			<img src={product.image} alt='Product Image' />
@@ -20,8 +26,8 @@ export const ProductItem: FC<ProductItemProps> = ({ product }) => {
 				<div className={styles.category}>{product.category}</div>
 			</div>
 			<div className={styles.footer}>
-				<Button>Add</Button>
-				<Button>Delete</Button>
+				<Button onClick={() => addToCart(product)}>Add</Button>
+				<Button onClick={() => removeFromCart(product.id)}>Delete</Button>
 			</div>
 		</div>
 	)

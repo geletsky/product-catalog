@@ -1,4 +1,4 @@
-export type Product = {
+export interface ProductType {
 	category: string
 	description: string
 	id: number
@@ -9,4 +9,8 @@ export type Product = {
 		count: number
 	}
 	title: string
+}
+
+export interface CartItemType extends ProductType {
+	quantity: number
 }
