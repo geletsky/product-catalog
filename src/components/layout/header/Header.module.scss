@@ -1,27 +1,40 @@
 .header {
+	padding: 0px 30px;
+	margin: 20px 0px 50px 0px;
+
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	min-height: 120px;
 
+	border-radius: 20px;
+	background-color: #fff;
+
 	.logo {
-		font-size: 48px;
-		font-weight: 700;
-	}
+		display: flex;
+		align-items: center;
+		gap: 15px;
 
-	.menu {
-		ul {
-			display: flex;
-			gap: 30px;
+		& img {
+			width: 50px;
+			height: 50px;
+		}
 
-			li {
-				font-weight: 500;
-				font-size: 22px;
-			}
+		.logoText {
+			font-size: 28px;
+			font-weight: 700;
 		}
 	}
 
+	.search {
+		margin: 0px auto 0px 50px;
+	}
+
 	.actions {
-		font-size: 24px;
+		display: flex;
+		align-items: center;
+		gap: 25px;
+
+		font-size: 28px;
 	}
 }

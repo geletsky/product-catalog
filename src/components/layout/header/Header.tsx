@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { IoCartSharp } from 'react-icons/io5'
+import { IoCartOutline, IoPerson, IoSettingsSharp } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
 
 import styles from './Header.module.scss'
@@ -7,19 +7,21 @@ import styles from './Header.module.scss'
 export const Header: FC = () => {
 	return (
 		<header className={styles.header}>
-			<div className={styles.logo}>IProduct</div>
-			<nav className={styles.menu}>
-				<ul>
-					<li>
-						<Link to='/'>Products</Link>
-					</li>
-				</ul>
-			</nav>
-			<div className={styles.actions}>
+			<Link to='/' className={styles.logo}>
+				<img src='/logo.svg' alt='Logo' />
+				<p className={styles.logoText}>Shopy Store</p>
+			</Link>
+			<nav className={styles.actions}>
 				<Link to='/cart'>
-					<IoCartSharp />
+					<IoCartOutline />
 				</Link>
-			</div>
+				<Link to='/cart'>
+					<IoPerson />
+				</Link>
+				<Link to='/cart'>
+					<IoSettingsSharp />
+				</Link>
+			</nav>
 		</header>
 	)
 }
