@@ -1,19 +1,17 @@
 import { useEffect, useState } from 'react'
 
-import { Product } from '../../../../types/product.types'
-
-import { SortBy } from './ProductList'
+import { ProductType } from '../../../../types/product.types'
 
 export const useFilterAndSortProducts = (
-	products: Product[] | null,
+	products: ProductType[] | null,
 	selectedCategory: string,
-	sortBy: SortBy
+	sortBy: string
 ) => {
 	const [filterAndSortProducts, setFilterAndSortProducts] = useState<
-		Product[] | null
+		ProductType[] | null
 	>(null)
 
-	const sortProducts = (products: Product[] | null): Product[] => {
+	const sortProducts = (products: ProductType[] | null): ProductType[] => {
 		if (!products) return []
 
 		return [...products].sort((a, b) => {

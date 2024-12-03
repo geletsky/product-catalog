@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 
-import { Product } from '../../../../types/product.types'
+import { ProductType } from '../../../../types/product.types'
 
 export const useFetchProducts = () => {
-	const [products, setProducts] = useState<Product[] | null>(null)
+	const [products, setProducts] = useState<ProductType[] | null>(null)
 	const [categories, setCategories] = useState<string[]>([])
 	const [error, setError] = useState<string | null>(null)
 
@@ -16,7 +16,7 @@ export const useFetchProducts = () => {
 					throw new Error('Failed to fetch products')
 				}
 
-				const data: Product[] = await response.json()
+				const data: ProductType[] = await response.json()
 				setProducts(data)
 
 				const uniqueCategories = [...new Set(data?.map(data => data.category))]

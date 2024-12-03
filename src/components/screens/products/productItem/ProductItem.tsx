@@ -19,15 +19,21 @@ export const ProductItem: FC<ProductItemProps> = ({
 }) => {
 	return (
 		<div className={styles.wrapper}>
-			<img src={product.image} alt='Product Image' />
+			<div className={styles.image}>
+				<img src={product.image} alt='Product Image' />
+			</div>
 			<div className={styles.title}>{product.title}</div>
 			<div className={styles.info}>
-				<div className={styles.price}>{product.price}</div>
-				<div className={styles.category}>{product.category}</div>
+				<div className={styles.price}>${product.price}</div>
+				<div className={styles.category}>• {product.category}</div>
 			</div>
 			<div className={styles.footer}>
-				<Button onClick={() => addToCart(product)}>Add</Button>
-				<Button onClick={() => removeFromCart(product.id)}>Delete</Button>
+				<Button onClick={() => addToCart(product)} variant={'orange'}>
+					Add to Cart
+				</Button>
+				<Button onClick={() => removeFromCart(product.id)}>
+					Remove from Cart
+				</Button>
 			</div>
 		</div>
 	)

@@ -2,19 +2,20 @@ import { FC, useState } from 'react'
 
 import styles from './ProductList.module.scss'
 
+import { Select } from '../../../ui/select/Select'
+
 import { useCart } from '../../../../context/CartContext'
 import { ProductItem } from '../productItem/ProductItem'
 
 import { useFetchProducts } from './useFetchProducts'
 import { useFilterAndSortProducts } from './useFilterAndSortProducts'
 
-export type SortBy = 'asc' | 'desc'
-
 export const ProductList: FC = () => {
 	const { products, categories } = useFetchProducts()
-	const [sortBy, setSortBy] = useState<SortBy>('asc')
+	const [sortBy, setSortBy] = useState<string>('asc')
 	const [selectedCategory, setSelectedCategory] = useState<string>('All')
-	const { addToCart, removeFromCart, cart } = useCart()
+	const { addToCart, removeFromCart } = useCart()
+	const dataSort = ['Ascending', 'Descending']
 
 	const filteredAndSortedProducts = useFilterAndSortProducts(
 		products,
@@ -25,24 +26,15 @@ export const ProductList: FC = () => {
 	return (
 		<>
 			{products ? (
-				<>
-					<select
-						onChange={event => setSelectedCategory(event.target.value)}
-						value={selectedCategory}
-					>
-						<option value='All'>All</option>
-						{categories.map(category => (
-							<option key={category}>{category}</option>
-						))}
-					</select>
+				<div className={styles.wrapper}>
+					<div className={styles.selects}>
+						<Select
+							data={['All', ...categories]}
+							onChange={setSelectedCategory}
+						/>
+						<Select data={dataSort} onChange={setSortBy} />
+					</div>
 
-					<select
-						onChange={event => setSortBy(event.target.value as SortBy)}
-						value={sortBy}
-					>
-						<option value='desc'>Desc</option>
-						<option value='asc'>Asc</option>
-					</select>
 					<div className={styles.products}>
 						{filteredAndSortedProducts?.map(product => (
 							<ProductItem
@@ -53,7 +45,7 @@ export const ProductList: FC = () => {
 							/>
 						))}
 					</div>
-				</>
+				</div>
 			) : (
 				<div>Loading...</div>
 			)}
