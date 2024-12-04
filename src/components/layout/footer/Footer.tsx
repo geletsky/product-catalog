@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import { Link } from 'react-router-dom'
 
 import styles from './Footer.module.scss'
 
@@ -10,13 +11,13 @@ export const Footer: FC = () => {
 					<h4>About Us</h4>
 					<ul>
 						<li>
-							<a href='/about'>Our Story</a>
+							<Link to='/about'>Our Story</Link>
 						</li>
 						<li>
-							<a href='/team'>Our Team</a>
+							<Link to='/team'>Our Team</Link>
 						</li>
 						<li>
-							<a href='/careers'>Careers</a>
+							<Link to='/careers'>Careers</Link>
 						</li>
 					</ul>
 				</div>
@@ -24,16 +25,16 @@ export const Footer: FC = () => {
 					<h4>Customer Service</h4>
 					<ul>
 						<li>
-							<a href='/help'>Help Center</a>
+							<Link to='/help'>Help Center</Link>
 						</li>
 						<li>
-							<a href='/shipping'>Shipping Policy</a>
+							<Link to='/shipping'>Shipping Policy</Link>
 						</li>
 						<li>
-							<a href='/returns'>Returns Policy</a>
+							<Link to='/returns'>Returns Policy</Link>
 						</li>
 						<li>
-							<a href='/faq'>FAQs</a>
+							<Link to='/faq'>FAQs</Link>
 						</li>
 					</ul>
 				</div>
@@ -50,6 +51,7 @@ export const Footer: FC = () => {
 					</ul>
 				</div>
 			</div>
+
 			<div className={styles.footerBottom}>
 				<p>&copy; 2024 Your Store. All rights reserved.</p>
 			</div>
