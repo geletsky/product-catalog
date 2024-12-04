@@ -4,12 +4,14 @@ import styles from './Select.module.scss'
 
 interface SelectPropsType {
 	data: string[]
-	onChange: (value: string) => void
+	onChange?: (value: string) => void
 }
 
 export const Select: FC<SelectPropsType> = ({ data, onChange }) => {
 	const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-		onChange(event.target.value)
+		if (onChange) {
+			onChange(event.target.value)
+		}
 	}
 
 	return (

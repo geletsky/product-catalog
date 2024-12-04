@@ -11,8 +11,8 @@ interface ButtonProps {
 export const Button: FC<ButtonProps> = ({ children, onClick, variant }) => {
 	return (
 		<button
-		className={`
-			${styles[variant === 'orange' ? 'btnOrange' : 'button']}
+			className={`
+			${styles[variant === 'orange' ? 'btnOrange' : variant === 'white' ? 'btnWhite' : 'button']}
 		`}
 			onClick={onClick}
 		>
