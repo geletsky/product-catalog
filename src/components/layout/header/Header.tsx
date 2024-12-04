@@ -15,10 +15,10 @@ export const Header: FC = () => {
 				<Link to='/cart'>
 					<IoCartOutline />
 				</Link>
-				<Link to='/cart'>
+				<Link to='/profile'>
 					<IoPerson />
 				</Link>
-				<Link to='/cart'>
+				<Link to='/settings'>
 					<IoSettingsSharp />
 				</Link>
 			</nav>
