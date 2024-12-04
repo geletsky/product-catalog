@@ -9,7 +9,7 @@ import { ProductType } from '../../../../types/product.types'
 interface ProductItemProps {
 	product: ProductType
 	addToCart: (product: ProductType) => void
-	removeFromCart: (id: number) => void
+	removeFromCart: (product: ProductType) => void
 }
 
 export const ProductItem: FC<ProductItemProps> = ({
@@ -31,7 +31,7 @@ export const ProductItem: FC<ProductItemProps> = ({
 				<Button onClick={() => addToCart(product)} variant={'orange'}>
 					Add to Cart
 				</Button>
-				<Button onClick={() => removeFromCart(product.id)}>
+				<Button onClick={() => removeFromCart(product)}>
 					Remove from Cart
 				</Button>
 			</div>

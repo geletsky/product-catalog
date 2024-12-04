@@ -2,6 +2,9 @@ import { FC } from 'react'
 
 import styles from './CartItem.module.scss'
 
+import { QuantityButton } from '../../../ui/quantityButton/QuantityButton'
+
+import { useCart } from '../../../../context/CartContext'
 import { CartItemType } from '../../../../types/product.types'
 
 interface CartItemProps {
@@ -9,6 +12,8 @@ interface CartItemProps {
 }
 
 export const CartItem: FC<CartItemProps> = ({ product }) => {
+	const { addToCart, removeFromCart } = useCart()
+
 	return (
 		<>
 			<div className={styles.cart}>
@@ -25,7 +30,15 @@ export const CartItem: FC<CartItemProps> = ({ product }) => {
 					</div>
 				</div>
 				<div className={styles.price}>${product.price}</div>
-				<div className={styles.quantity}>{product.quantity}</div>
+				<div className={styles.wrapperQuantity}>
+					<QuantityButton
+						onClick={() => removeFromCart(product)}
+						type='remove'
+					/>
+					<div className={styles.quantity}>{product.quantity}</div>
+					<QuantityButton onClick={() => addToCart(product)} type='add' />
+				</div>
+
 				<div className={styles.totalPrice}>
 					${product.price * product.quantity}
 				</div>

@@ -60,8 +60,11 @@
 		width: 15%;
 		font-weight: 700;
 	}
-	.quantity {
-		text-align: center;
+	.wrapperQuantity {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 15px;
 		width: 15%;
 	}
 	.totalPrice {

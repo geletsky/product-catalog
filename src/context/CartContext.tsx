@@ -5,7 +5,7 @@ import { CartItemType, ProductType } from '../types/product.types'
 interface CartContextType {
 	cart: CartItemType[]
 	addToCart: (product: ProductType) => void
-	removeFromCart: (id: number) => void
+	removeFromCart: (product: ProductType) => void
 	clearCart: () => void
 	showNotification: (message: string) => void
 	totalPrice: number
@@ -25,6 +25,7 @@ export const CartProvider: FC<{ children: ReactNode }> = ({ children }) => {
 			const item = prev.find(item => item.id === product.id)
 
 			if (item) {
+				showNotification('Product added to cart!')
 				return prev.map(item =>
 					item.id === product.id
 						? { ...item, quantity: item.quantity + 1 }
@@ -37,15 +38,25 @@ export const CartProvider: FC<{ children: ReactNode }> = ({ children }) => {
 		})
 	}
 
-	const removeFromCart = (id: number) => {
-		const item = cart.find(item => item.id === id)
+	const removeFromCart = (product: ProductType) => {
+		setCart(prev => {
+			const item = prev.find(item => item.id === product.id)
 
-		if (item) {
-			setCart(prev => prev.filter(item => item.id !== id))
-			showNotification('The item has been removed from the cart!')
-		} else {
-			showNotification('There is no item in the cart!')
-		}
+			if (item?.quantity === undefined) {
+				showNotification('There is no item in the cart!')
+				return prev
+			}
+
+			if (item?.quantity === 1) {
+				showNotification('The item has been removed from the cart!')
+				return prev.filter(item => item.id !== product.id)
+			} else {
+				showNotification('Has been removed one position from the cart!')
+				return prev.map(item =>
+					item.id === product.id ? { ...item, quantity: item.quantity - 1 } : item
+				)
+			}
+		})
 	}
 
 	const clearCart = () => {
