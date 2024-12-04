@@ -12,10 +12,10 @@ import { useFilterAndSortProducts } from './useFilterAndSortProducts'
 
 export const ProductList: FC = () => {
 	const { products, categories } = useFetchProducts()
-	const [sortBy, setSortBy] = useState<string>('asc')
-	const [selectedCategory, setSelectedCategory] = useState<string>('All')
+	const [sortBy, setSortBy] = useState<string>('ascending')
+	const [selectedCategory, setSelectedCategory] = useState<string>('all')
 	const { addToCart, removeFromCart } = useCart()
-	const dataSort = ['Ascending', 'Descending']
+	const dataSort = ['ascending', 'descending']
 
 	const filteredAndSortedProducts = useFilterAndSortProducts(
 		products,
@@ -25,14 +25,22 @@ export const ProductList: FC = () => {
 
 	return (
 		<>
-			{products ? (
+			{filteredAndSortedProducts ? (
 				<div className={styles.wrapper}>
-					<div className={styles.selects}>
-						<Select
-							data={['All', ...categories]}
-							onChange={setSelectedCategory}
-						/>
-						<Select data={dataSort} onChange={setSortBy} />
+					<div className={styles.header}>
+						<div className={styles.info}>
+							<h2>New Stock!</h2>
+							<p>
+								<span>{filteredAndSortedProducts?.length} items</span> are available
+							</p>
+						</div>
+						<div className={styles.selects}>
+							<Select
+								data={['all', ...categories]}
+								onChange={setSelectedCategory}
+							/>
+							<Select data={dataSort} onChange={setSortBy} />
+						</div>
 					</div>
 
 					<div className={styles.products}>
