@@ -2,6 +2,7 @@ import { FC, useState } from 'react'
 
 import styles from './ProductList.module.scss'
 
+import { Input } from '../../../ui/input/Input'
 import { Loader } from '../../../ui/loader/Loader'
 import { Select } from '../../../ui/select/Select'
 
@@ -17,14 +18,18 @@ export const ProductList: FC = () => {
 	const { products, categories, error, isLoading } = useFetchProducts()
 	const [sortBy, setSortBy] = useState<string>('ascending')
 	const [selectedCategory, setSelectedCategory] = useState<string>('all')
+	const [searchQuery, setSearchQuery] = useState<string>('')
 	const { addToCart, removeFromCart, isNotification, notificationMessage } =
 		useCart()
+
 	const dataSort = ['ascending', 'descending']
 
 	const filteredAndSortedProducts = useFilterAndSortProducts(
 		products,
 		selectedCategory,
 		sortBy
+	)?.filter(product =>
+		product.title.toLowerCase().includes(searchQuery.toLowerCase())
 	)
 
 	if (error) {
@@ -46,6 +51,12 @@ export const ProductList: FC = () => {
 								available
 							</p>
 						</div>
+						<Input
+							value={searchQuery}
+							type='search'
+							placeholder='Search for products by name'
+							onChange={event => setSearchQuery(event.target.value)}
+						/>
 						<div className={styles.selects}>
 							<Select
 								data={['all', ...categories]}
@@ -56,14 +67,14 @@ export const ProductList: FC = () => {
 					</div>
 
 					<div className={styles.products}>
-						{filteredAndSortedProducts?.map(product => (
+						{filteredAndSortedProducts?.length ? filteredAndSortedProducts?.map(product => (
 							<ProductItem
 								key={product.id}
 								product={product}
 								addToCart={addToCart}
 								removeFromCart={removeFromCart}
 							/>
-						))}
+						)) : <div className={styles.productsError}>No products available</div>}
 					</div>
 				</div>
 			)}
