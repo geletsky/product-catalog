@@ -1,5 +1,9 @@
 # Product Catalog App
 
+### You can view the live version of the application at the following link:
+
+[Live Demo](https://product-catalog-livid.vercel.app/)
+
 ## Description
 
 This is a Product Catalog App where users can view products, add them to the cart, filter by category, sort by price, and use the search for the desired product. The application demonstrates the use of React.js with TypeScript for creating functional components, managing state using the Context API, and integrating with an external API (FakeStoreAPI) for dynamically retrieving product data.
