@@ -5,9 +5,10 @@ import styles from './Select.module.scss'
 interface SelectPropsType {
 	data: string[]
 	onChange?: (value: string) => void
+	props?: any
 }
 
-export const Select: FC<SelectPropsType> = ({ data, onChange }) => {
+export const Select: FC<SelectPropsType> = ({ data, onChange, ...props }) => {
 	const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
 		if (onChange) {
 			onChange(event.target.value)
@@ -16,7 +17,7 @@ export const Select: FC<SelectPropsType> = ({ data, onChange }) => {
 
 	return (
 		<div className={styles.wrapper}>
-			<select className={styles.select} onChange={handleChange}>
+			<select className={styles.select} onChange={handleChange} {...props}>
 				{data.map((item, index) => (
 					<option key={index} value={item}>
 						{item}

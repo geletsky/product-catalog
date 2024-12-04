@@ -20,14 +20,14 @@ export const CartShipping: FC = () => {
 			<div className={styles.wrapper}>
 				<div className={styles.wrapperInfo}>
 					<h3>Calculated Shipping</h3>
-					<Select data={dataCountry} />
-					<Select data={dataCity} />
+					<Select data={dataCountry} aria-label="Choose a country"/>
+					<Select data={dataCity} aria-label="Choose a city"/>
 					<Button>Update</Button>
 				</div>
 				<hr />
 				<div className={styles.wrapperInfo}>
 					<h3>Days Of Delivery</h3>
-					<Select data={daysDelivery} />
+					<Select data={daysDelivery} aria-label="Choose days of delivery"/>
 					<Button>Apply</Button>
 				</div>
 				<div className={styles.wrapperTotal}>

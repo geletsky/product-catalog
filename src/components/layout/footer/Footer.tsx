@@ -8,7 +8,7 @@ export const Footer: FC = () => {
 		<footer>
 			<div className={styles.footer}>
 				<div className={styles.footerSection}>
-					<h4>About Us</h4>
+					<h3>About Us</h3>
 					<ul>
 						<li>
 							<Link to='/about'>Our Story</Link>
@@ -22,7 +22,7 @@ export const Footer: FC = () => {
 					</ul>
 				</div>
 				<div className={styles.footerSection}>
-					<h4>Customer Service</h4>
+					<h3>Customer Service</h3>
 					<ul>
 						<li>
 							<Link to='/help'>Help Center</Link>
@@ -39,7 +39,7 @@ export const Footer: FC = () => {
 					</ul>
 				</div>
 				<div className={styles.footerSection}>
-					<h4>Contact</h4>
+					<h3>Contact</h3>
 					<ul>
 						<li>
 							Email: <a href='mailto:support@store.com'>support@store.com</a>

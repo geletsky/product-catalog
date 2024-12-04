@@ -61,8 +61,9 @@ export const ProductList: FC = () => {
 							<Select
 								data={['all', ...categories]}
 								onChange={setSelectedCategory}
+								aria-label="Choose a category"
 							/>
-							<Select data={dataSort} onChange={setSortBy} />
+							<Select data={dataSort} onChange={setSortBy} aria-label="Choose sortBy"/>
 						</div>
 					</div>
 

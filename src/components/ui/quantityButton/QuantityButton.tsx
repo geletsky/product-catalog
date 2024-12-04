@@ -2,8 +2,6 @@ import { FC } from 'react'
 
 import styles from './QuantityButton.module.scss'
 
-import { ProductType } from '../../../types/product.types'
-
 interface QuantityButtonPropsType {
 	type: string
 	onClick: () => void

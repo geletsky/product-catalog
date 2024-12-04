@@ -17,13 +17,13 @@ export const Header: FC = () => {
 			</Link>
 			<nav className={styles.actions}>
 				<Link to='/cart'>
-					<IoCart className={styles.icon} />
+					<IoCart className={styles.icon} aria-label='Cart'/>
 				</Link>
 				<Link to='/profile'>
-					<IoPerson className={styles.icon}/>
+					<IoPerson className={styles.icon} aria-label='Profile'/>
 				</Link>
 				<Link to='/settings'>
-					<IoSettingsSharp className={styles.icon}/>
+					<IoSettingsSharp className={styles.icon} aria-label='Setting'/>
 				</Link>
 			</nav>
 		</header>
