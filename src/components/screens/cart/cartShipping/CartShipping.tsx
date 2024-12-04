@@ -49,7 +49,7 @@ export const CartShipping: FC = () => {
 			</div>
 			
 			{cart.length > 0 && (
-				<Button variant='orange'>
+				<Button variant='yellow'>
 					<Link to={'/'}>Continue Shopping</Link>
 				</Button>
 			)}

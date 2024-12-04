@@ -28,7 +28,7 @@ export const ProductItem: FC<ProductItemProps> = ({
 				<div className={styles.category}>• {product.category}</div>
 			</div>
 			<div className={styles.footer}>
-				<Button onClick={() => addToCart(product)} variant={'orange'}>
+				<Button onClick={() => addToCart(product)} variant={'yellow'}>
 					Add to Cart
 				</Button>
 				<Button onClick={() => removeFromCart(product)}>

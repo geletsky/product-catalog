@@ -38,7 +38,7 @@ export const CartList: FC = () => {
 					<div className={styles.warningText}>
 						It's empty here for now. Time to add something interesting!
 					</div>
-					<Button variant='orange'>
+					<Button variant='yellow'>
 						<Link to={'/'}>Start Shopping</Link>
 					</Button>
 				</div>

@@ -1,5 +1,9 @@
 import { FC } from 'react'
-import { IoCartOutline, IoPerson, IoSettingsSharp } from 'react-icons/io5'
+import {
+	IoCart,
+	IoPerson,
+	IoSettingsSharp
+} from 'react-icons/io5'
 import { Link } from 'react-router-dom'
 
 import styles from './Header.module.scss'
@@ -13,13 +17,13 @@ export const Header: FC = () => {
 			</Link>
 			<nav className={styles.actions}>
 				<Link to='/cart'>
-					<IoCartOutline />
+					<IoCart className={styles.icon} />
 				</Link>
 				<Link to='/profile'>
-					<IoPerson />
+					<IoPerson className={styles.icon}/>
 				</Link>
 				<Link to='/settings'>
-					<IoSettingsSharp />
+					<IoSettingsSharp className={styles.icon}/>
 				</Link>
 			</nav>
 		</header>

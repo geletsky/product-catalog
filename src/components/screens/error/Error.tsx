@@ -14,7 +14,7 @@ export const Error: FC<ErrorPropsType> = ({ error }) => {
 		<div className={styles.wrapper}>
 			<div className={styles.text}>Oops! Something Went Wrong</div>
 			<div className={styles.error}>{error}</div>
-			<Button variant='orange'>
+			<Button variant='yellow'>
 				<Link to={'/'}>Back To Home</Link>
 			</Button>
 		</div>

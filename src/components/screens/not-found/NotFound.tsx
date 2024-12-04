@@ -10,7 +10,7 @@ export const NotFound: FC = () => {
 		<div className={styles.wrapper}>
 			<div className={styles.text}>Oops! Page Not Found</div>
 			<img src='/public/not-found.svg' alt='Not Found' />
-			<Button variant='orange'>
+			<Button variant='yellow'>
 				<Link to={'/'}>Back To Home</Link>
 			</Button>
 		</div>
