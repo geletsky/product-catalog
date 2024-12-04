@@ -53,7 +53,9 @@ export const CartProvider: FC<{ children: ReactNode }> = ({ children }) => {
 			} else {
 				showNotification('Has been removed one position from the cart!')
 				return prev.map(item =>
-					item.id === product.id ? { ...item, quantity: item.quantity - 1 } : item
+					item.id === product.id
+						? { ...item, quantity: item.quantity - 1 }
+						: item
 				)
 			}
 		})
@@ -63,9 +65,10 @@ export const CartProvider: FC<{ children: ReactNode }> = ({ children }) => {
 		setCart([])
 	}
 
-	const totalPrice = cart.reduce(
-		(total, item) => total + item.price * item.quantity,
-		0
+	const totalPrice = parseFloat(
+		cart
+			.reduce((total, item) => total + item.price * item.quantity, 0)
+			.toFixed(1)
 	)
 
 	const showNotification = (message: string) => {

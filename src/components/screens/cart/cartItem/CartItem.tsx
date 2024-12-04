@@ -40,7 +40,7 @@ export const CartItem: FC<CartItemProps> = ({ product }) => {
 				</div>
 
 				<div className={styles.totalPrice}>
-					${product.price * product.quantity}
+					${(product.price * product.quantity).toFixed(1)}
 				</div>
 			</div>
 		</>
