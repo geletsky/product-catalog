@@ -6,6 +6,7 @@ import { Loader } from '../../../ui/loader/Loader'
 import { Select } from '../../../ui/select/Select'
 
 import { useCart } from '../../../../context/CartContext'
+import { Notification } from '../../../layout/notification/Notification'
 import { Error } from '../../error/Error'
 import { ProductItem } from '../productItem/ProductItem'
 
@@ -16,7 +17,8 @@ export const ProductList: FC = () => {
 	const { products, categories, error, isLoading } = useFetchProducts()
 	const [sortBy, setSortBy] = useState<string>('ascending')
 	const [selectedCategory, setSelectedCategory] = useState<string>('all')
-	const { addToCart, removeFromCart } = useCart()
+	const { addToCart, removeFromCart, isNotification, notificationMessage } =
+		useCart()
 	const dataSort = ['ascending', 'descending']
 
 	const filteredAndSortedProducts = useFilterAndSortProducts(
@@ -31,6 +33,7 @@ export const ProductList: FC = () => {
 
 	return (
 		<>
+			<Notification message={notificationMessage} isShow={isNotification} />
 			{isLoading ? (
 				<Loader />
 			) : (

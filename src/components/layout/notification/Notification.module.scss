@@ -1,0 +1,56 @@
+.notification {
+	padding: 16px 24px;
+
+	position: fixed;
+	top: 140px;
+	right: 24px;
+	z-index: 5;
+
+	cursor: default;
+	color: #fff;
+
+	display: none;
+	gap: 8px;
+
+	border-radius: 8px;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+
+	animation: slideIn 1s;
+
+	border: 1px solid #43a047;
+	background: #e8f5e9;
+
+	&.success {
+		display: flex;
+	}
+}
+.notificationBody {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+
+	& div {
+		color: #000;
+		font-size: 14px;
+		font-weight: 600;
+		line-height: 142%;
+	}
+
+	& p {
+		color: #546e7a;
+		font-size: 14px;
+		line-height: 142%;
+	}
+}
+
+@keyframes slideIn {
+	from {
+		transform: translateX(200px);
+		opacity: 0;
+	}
+
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
